@@ -1,9 +1,467 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Prueba GitHub Pages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Entrenamiento Quebrada del Yuro - Villa Clara</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #005c97, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        header {
+            background: linear-gradient(90deg, #0038a8, #0077c0, #0038a8);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cuban-flag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 50px;
+            background: linear-gradient(to bottom, 
+                #002a8f 0%, #002a8f 33.33%, 
+                white 33.33%, white 66.66%, 
+                #cf142b 66.66%, #cf142b 100%);
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        
+        .cuban-flag:before {
+            content: "★";
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .school-name {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .presentation-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        
+        .location {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .intro-section {
+            display: flex;
+            padding: 40px;
+            gap: 30px;
+            background: #f8f9ff;
+        }
+        
+        .about-center {
+            flex: 1;
+        }
+        
+        .about-center h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ffd700;
+            display: inline-block;
+        }
+        
+        .about-center p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .disciplines {
+            flex: 1;
+        }
+        
+        .disciplines h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ffd700;
+            display: inline-block;
+        }
+        
+        .discipline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .discipline-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #0077c0;
+            transition: transform 0.3s;
+        }
+        
+        .discipline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .discipline-card h3 {
+            color: #1a2a6c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .discipline-card h3 i {
+            color: #ff9800;
+        }
+        
+        .gallery-section {
+            padding: 40px;
+            background: #eef2ff;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #1a2a6c;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd700, #ff9800);
+            bottom: 0;
+            left: 15%;
+            border-radius: 2px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            position: relative;
+            height: 250px;
+            background: #d1e0ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #b1c4e9;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 42, 108, 0.85);
+            color: white;
+            padding: 15px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .add-info {
+            background: #1a2a6c;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .add-info h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            width: 250px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        
+        .info-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        footer {
+            background: linear-gradient(90deg, #002a8f, #0038a8);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact-info, .location-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .footer-heading {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin: 10px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .intro-section {
+                flex-direction: column;
+            }
+            
+            .school-name {
+                font-size: 2.2rem;
+            }
+            
+            .presentation-title {
+                font-size: 1.4rem;
+            }
+            
+            .cuban-flag {
+                width: 60px;
+                height: 40px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>¡Funciona!</h1>
+    <div class="container">
+        <header>
+            <div class="cuban-flag"></div>
+            <h1 class="school-name">Centro de Entrenamiento Quebrada del Yuro</h1>
+            <h2 class="presentation-title">Excelencia en Ciencias y Humanidades</h2>
+            <p class="location">Villa Clara, Cuba</p>
+        </header>
+        
+        <div class="intro-section">
+            <div class="about-center">
+                <h2>Nuestra Institución</h2>
+                <p>El Centro de Entrenamiento Quebrada del Yuro en Villa Clara es una prestigiosa institución educativa dedicada a la formación de jóvenes talentos en diversas áreas del conocimiento científico y humanístico.</p>
+                <p>Fundado en 1995, nuestro centro ha sido cuna de destacados profesionales que han contribuido al desarrollo científico y cultural de Cuba. Con instalaciones modernas y un equipo docente de primer nivel, ofrecemos una educación integral que combina teoría y práctica.</p>
+                <p>Nuestro modelo educativo se basa en el desarrollo de habilidades críticas, pensamiento creativo y valores humanistas, preparando a los estudiantes para los desafíos del siglo XXI.</p>
+            </div>
+            
+            <div class="disciplines">
+                <h2>Áreas de Estudio</h2>
+                <div class="discipline-grid">
+                    <div class="discipline-card">
+                        <h3><i class="fas fa-flask"></i> Química</h3>
+                        <p>Programas avanzados en química analítica, orgánica y bioquímica con laboratorios equipados.</p>
+                    </div>
+                    
+                    <div class="discipline-card">
+                        <h3><i class="fas fa-laptop-code"></i> Informática</h3>
+                        <p>Desarrollo de software, inteligencia artificial y programación con tecnología de punta.</p>
+                    </div>
+                    
+                    <div class="discipline-card">
+                        <h3><i class="fas fa-dna"></i> Biología</h3>
+                        <p>Estudios en biología molecular, genética y conservación de ecosistemas cubanos.</p>
+                    </div>
+                    
+                    <div class="discipline-card">
+                        <h3><i class="fas fa-book"></i> Español</h3>
+                        <p>Estudios literarios, lingüística y creación literaria con enfoque en la cultura cubana.</p>
+                    </div>
+                    
+                    <div class="discipline-card">
+                        <h3><i class="fas fa-globe-americas"></i> Inglés</h3>
+                        <p>Programas intensivos de inglés con certificación internacional y preparación TOEFL.</p>
+                    </div>
+                    
+                    <div class="discipline-card">
+                        <h3><i class="fas fa-calculator"></i> Matemáticas</h3>
+                        <p>Programas avanzados en matemáticas puras y aplicadas con participación en olimpiadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-section">
+            <div class="section-header">
+                <h2>Nuestras Instalaciones</h2>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Edificio Principal">
+                    <div class="gallery-caption">Edificio Principal</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Laboratorio de Ciencias">
+                    <div class="gallery-caption">Laboratorio de Ciencias</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Biblioteca">
+                    <div class="gallery-caption">Biblioteca Especializada</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Aula de Informática">
+                    <div class="gallery-caption">Aula de Informática</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-info">
+            <h2>Nuestro Impacto Educativo</h2>
+            <p>Formando a los líderes científicos y humanistas del futuro</p>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Excelencia Académica</h3>
+                    <p>98% de graduados ingresan a la educación superior</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Premios Nacionales</h3>
+                    <p>15 premios en olimpiadas científicas en los últimos 3 años</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidad</h3>
+                    <p>Programas de extensión a la comunidad villaclareña</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3 class="footer-heading">Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Carretera Central, Km 12.5, Villa Clara</li>
+                        <li><i class="fas fa-phone"></i> +53 42 123456</li>
+                        <li><i class="fas fa-envelope"></i> info@quebradadelyuro.edu.cu</li>
+                    </ul>
+                </div>
+                
+                <div class="location-info">
+                    <h3 class="footer-heading">Ubicación</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-bus"></i> Líneas de ómnibus: 12, 24, 45</li>
+                        <li><i class="fas fa-map-marked-alt"></i> A 15 minutos del centro de Santa Clara</li>
+                        <li><i class="fas fa-university"></i> Cercano a la Universidad Central</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Centro de Entrenamiento Quebrada del Yuro © 2023 - Villa Clara, Cuba</p>
+                <p>Institución del Ministerio de Educación de Cuba</p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
